@@ -10,6 +10,7 @@ class BookList extends React.Component {
       return (
         <l1
           key={book.title}
+          onClick={() => this.props.selectBook(book)}
           className="list-group-item">
           {book.title}
         </l1>
@@ -33,9 +34,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  // whenever selectbook is called,
-  // the result should be passed to all of your reducers
   return bindActionCreators({ selectBook: selectBook }, dispatch);
 }
 
-export default connect(mapStateToProps)(BookList);
+export default connect(mapStateToProps, mapDispatchToProps)(BookList);
